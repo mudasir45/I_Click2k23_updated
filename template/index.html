@@ -64,7 +64,7 @@ https://templatemo.com/tm-565-onix-digital
               <li class="scroll-to-section"><a href="#video">Videos</a></li> 
               <li class="scroll-to-section" style="margin-right: 15em;"><a href="#contact">Contact Us</a></li> 
               {% if request.user.is_authenticated %}
-              <li class="scroll-to-section"><a href="{% url 'userSignUp' %}">Profile, {{request.user.first_name}}</a></li> 
+              <li class="scroll-to-section"><a href="{% url 'userSignUp' %}">Profile, {{ request.user.first_name }}</a></li> 
               <div class="main-red-button-hover" style="margin-right: 20px;" ><a href="{% url 'userLogout' %}">Logout</a></div> 
               {% else %}
               <div class="main-red-button-hover" style="margin-right: 20px;" ><a href="{% url 'userSignUp' %}">SignUp</a></div> 
@@ -122,11 +122,15 @@ https://templatemo.com/tm-565-onix-digital
   </div>
 
 
+
+
+  
+
   <div id="services" class="our-services section">
     <div class="services-right-dec">
       <img src="{% static 'assets/images/services-right-dec.png' %}" alt="">
     </div>
-    <div class="container">
+    <div class="container-fluid">
       <div class="services-left-dec">
         <img src="{% static 'assets/images/services-left-dec.png' %}" alt="">
       </div>
@@ -138,66 +142,10 @@ https://templatemo.com/tm-565-onix-digital
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-carousel owl-services">
-            <div class="item">
-              <h4>Future of Technology</h4>
-              <div class="icon"><img src="{% static 'assets/images/service-icon-01.png' %}" alt=""></div>
-              <div class="my-div">
-                <p>The future is shaped by the ideas and creativity of the students Experience the power of technology and innovation</p>
-              </div>
-            </div>
-            <div class="item">
-              <h4>Unique Opportunity</h4>
-              <div class="icon"><img src="{% static 'assets/images/service-icon-02.png' %}" alt=""></div>
-              <div class="my-div">
-                <p>Showcase your talent and creativity in the field of technology and programming Learn and grow as a professional</p>
-              </div>
-              
-            </div>
-            <div class="item">
-              <h4>I click exhibition</h4>
-              <div class="icon"><img src="{% static 'assets/images/service-icon-03.png' %}"alt=""></div>
-              <div class="my-div">
-                              <p>The place where the future of technology is shaped by the ideas of students today Join us and be a part of the innovation journey</p>
-              </div>
-            </div>
-            <div class="item">
-              <h4>Programming Competition at Department Level</h4>
-              <div class="icon"><img src="{% static 'assets/images/service-icon-04.png' %}" alt=""></div>
-              <div class="my-div1">
-                <p>Test your coding skills Compete with your peers for exciting prizes</p>
-              </div>
-              
-            </div>
-            <div class="item">
-              <h4>Judges</h4>
-              <div class="icon"><img src="{% static 'assets/images/service-icon-01.png' %}" alt=""></div>
-              <div class="my-div">
-                <p>Esteemed judges to evaluate the competition entries Selecting the winners with their knowledge and experience</p>
-              </div>
-            </div>
-            <div class="item">
-              <h4>Event Overview</h4>
-              <div class="icon"><img src="{% static 'assets/images/service-icon-02.png' %}" alt=""></div>
-              <div class="my-div">
-                 <p>Innovation is the key to success An opportunity to showcase talents</p>
-              </div>
-            </div>
-            <div class="item">
-              <h4>Discover the digital marketing trend</h4>
-              <div class="icon"><img src="{% static 'assets/images/service-icon-04.png' %}" alt=""></div>
-              <div class="my-div1">
-                <p>Get to know more about the topic in details</p>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
+      {% include 'projects.html' %}
     </div>
   </div>
+
 
   <div id="about" class="about-us section">
     <div class="container">

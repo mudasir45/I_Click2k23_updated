@@ -16,16 +16,7 @@ def userSignUp(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-        
-        if(User.objects.filter(username = username).exists()):
-            messages.error(request, 'usrename already exists')
-            return HttpResponseRedirect(request.path_info)
-        
-        if(password1!=password2):
-            messages.error(request, 'Password and confirm password are not mached!')
-            return HttpResponseRedirect(request.path_info)
-        
+
         current_user = User.objects.create_user(
             username=username,
             email=email,
@@ -38,19 +29,25 @@ def userSignUp(request):
         return redirect('userLogin')
     return render(request, 'accounts/userSignUp.html')
 
+def check_username_availability(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        if User.objects.filter(username=username).exists():
+            return JsonResponse({'message': 'Username already exists'})
+        else:
+            return JsonResponse({'message': 'Username is available'})
+
 def userLogin(request):
     if request.method == "POST":
         username = request.POST.get('username')
-        password1 = request.POST.get('password1')
+        password = request.POST.get('password')
 
-        if User.objects.filter(username = username).exists():
-            try:
-                current_user = authenticate(request, username=username, password = password1)
+        current_user = authenticate(request, username=username, password=password)
+        if current_user is not None:
                 login(request, current_user)
                 return redirect('home')
-            except:
-                messages.error(request, "Invalid Credientials!")
-                return HttpResponseRedirect(request.path_info)
+        else:
+            return JsonResponse({'message':'Invalid Credientials'})
     return render(request, 'accounts/userLogin.html')
                  
 def userLogout(request):
@@ -58,7 +55,11 @@ def userLogout(request):
     return redirect('home')
 
 def home(request):
-    return render(request, 'index.html') 
+    project = Project.objects.all()
+    context = {
+        'projects':project
+    }
+    return render(request, 'index.html', context) 
 
 
 # def stdlogin(request):

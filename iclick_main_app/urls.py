@@ -16,5 +16,6 @@ urlpatterns = [
     # path('stdupdateprofile', views.stdupdate, name='stdupdate'),
     # path('stdupdatedone', views.stdupdatedone, name='stdupdatedone'),
     path('alert', views.alert, name='alert'),
+    path('check_username_availability/', views.check_username_availability, name='check_username_availability'),
 
 ] 

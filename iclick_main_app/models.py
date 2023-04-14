@@ -26,14 +26,15 @@ class Project(models.Model):
     member3_name = models.CharField(max_length=200, null=True, blank=True)
     member3_roll = models.CharField(max_length=200, null=True, blank=True)
     dept = models.CharField(max_length=30, null=True, blank=True)
-    member1_pic = models.ImageField(upload_to='media/students/')
-    member2_pic = models.ImageField(upload_to='media/students/')
-    member3_pic = models.ImageField(upload_to='media/students/')
+    member1_pic = models.ImageField(upload_to='media/students/', null=True, blank=True)
+    member2_pic = models.ImageField(upload_to='media/students/', null=True, blank=True)
+    member3_pic = models.ImageField(upload_to='media/students/', null=True, blank=True)
+    featured_image = models.ImageField(upload_to='media/projects_img/', null=True, blank=True)
     supervisor = models.ForeignKey(Supervisor, on_delete=models.CASCADE, null=True, blank=True)
-    rating_review = models.ManyToManyField('Project_Reviews', default=list)
+    rating_review = models.ManyToManyField('Project_Reviews', default=None, blank=True)
 
-    # def __str__(self):
-    #     return f"({self.team_leader_name}-{self.dept})"
+    def __str__(self):
+        return f"({self.team_leader_name}-{self.dept})"
 
 
 class Reviewer(models.Model):
