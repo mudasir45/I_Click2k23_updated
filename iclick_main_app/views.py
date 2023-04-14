@@ -13,13 +13,12 @@ import os
 def userSignUp(request):
     if request.method == "POST":
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
         username = request.POST.get('username')
         email = request.POST.get('email')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
         
-        if(User.objects.filter(username = email).exists()):
+        if(User.objects.filter(username = username).exists()):
             messages.error(request, 'usrename already exists')
             return HttpResponseRedirect(request.path_info)
         
@@ -28,21 +27,20 @@ def userSignUp(request):
             return HttpResponseRedirect(request.path_info)
         
         current_user = User.objects.create_user(
-            username=email,
+            username=username,
             email=email,
             first_name = first_name,
-            last_name = last_name,
             )
         current_user.set_password(password1)
         current_user.save()
 
         messages.success(request, 'Registration successfull! Login here')
         return redirect('userLogin')
-    return render(request, 'accounts/SignUp.html')
+    return render(request, 'accounts/userSignUp.html')
 
 def userLogin(request):
     if request.method == "POST":
-        username = request.POST.get('email')
+        username = request.POST.get('username')
         password1 = request.POST.get('password1')
 
         if User.objects.filter(username = username).exists():
@@ -53,7 +51,7 @@ def userLogin(request):
             except:
                 messages.error(request, "Invalid Credientials!")
                 return HttpResponseRedirect(request.path_info)
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/userLogin.html')
                  
 def userLogout(request):
     logout(request)
