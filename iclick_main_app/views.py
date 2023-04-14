@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
-from .models import ProjectDetails
-from .models import SupervisorDetails
-from .models import ReviewerDetails
-from .models import Reviews
+from .models import Project
+from .models import Supervisor
+from .models import Reviewer
+from .models import Project_Reviews
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.http import JsonResponse

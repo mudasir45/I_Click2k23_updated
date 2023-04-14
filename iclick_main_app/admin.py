@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import ProjectDetails
-from .models import ReviewerDetails
-from .models import SupervisorDetails
-from .models import Reviews
+from .models import Project
+from .models import Reviewer
+from .models import Supervisor
+from .models import Project_Reviews
 
-admin.site.register(ProjectDetails)
-admin.site.register(ReviewerDetails)
-admin.site.register(SupervisorDetails)
-admin.site.register(Reviews)
+admin.site.register(Project)
+admin.site.register(Reviewer)
+admin.site.register(Supervisor)
+admin.site.register(Project_Reviews)
 
