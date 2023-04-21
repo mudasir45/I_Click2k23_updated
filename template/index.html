@@ -59,8 +59,8 @@ https://templatemo.com/tm-565-onix-digital
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="#">Projects</a></li>
               <li class="scroll-to-section"><a href="#about">About</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Gallary</a></li>
               <li class="scroll-to-section"><a href="#video">Videos</a></li> 
               <li class="scroll-to-section" style="margin-right: 15em;"><a href="#contact">Contact Us</a></li> 
               {% if request.user.is_authenticated %}
@@ -141,8 +141,8 @@ https://templatemo.com/tm-565-onix-digital
             <h2><em>Innovating for Success</em></h2>
           </div>
         </div>
+        {% include 'projects.html' %}
       </div>
-      {% include 'projects.html' %}
     </div>
   </div>
 

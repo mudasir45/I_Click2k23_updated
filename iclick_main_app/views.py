@@ -61,6 +61,17 @@ def home(request):
     }
     return render(request, 'index.html', context) 
 
+def project_list(request):
+    current_user = request.user
+    reviewer = Reviewer.objects.filter(user = current_user).first()
+    supervisor = Supervisor.objects.filter(user = current_user).first()
+    if reviewer:
+        user = reviewer
+    if supervisor:
+        user = supervisor
+    return render
+
+
 
 # def stdlogin(request):
 #     if request.method == "POST":
